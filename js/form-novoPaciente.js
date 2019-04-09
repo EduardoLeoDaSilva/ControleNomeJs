@@ -1,12 +1,23 @@
 var btnAdicionar = document.querySelector("#adicionar-paciente");
+var ul= document.querySelector("#mensagem-erro")
 
 
 btnAdicionar.addEventListener("click", function () {
     event.preventDefault();
-
+    ul.innerHTML = "";
     var formAdicionarPaciente = document.querySelector("#form-adiciona");
     var paciente = obterPaciente(formAdicionarPaciente);
-    adicionarPaciente(paciente);
+    var erros = validarPaciente(paciente);
+    if(erros.length >=1){
+        exibirMensagensDeErro(erros);
+
+    }else{
+       
+       ul.classList.add("invisible");
+       ul.innerHTML = "";
+        adicionarPaciente(paciente);
+        formAdicionarPaciente.reset();
+    }
 
 
 });
@@ -52,3 +63,37 @@ function adicionarPaciente(paciente) {
 
 }
 
+function validarPaciente(paciente){
+    
+    var erros = [];
+
+    
+    if(!validarAltura(paciente.altura)){
+        erros.push("Altura inválida");
+    }
+
+    if(!validarPeso(paciente.peso)){
+        erros.push("Peso invalido");
+    }
+
+    if(!(paciente.nome.length >= 2)){
+        erros.push("Nome tem que ter no minimo 2 caracteres");
+    }
+
+    if(!(paciente.gordura > 0)){
+        erros.push("Gordura tem q ser maior q 0");
+    }
+    return erros;
+
+}
+
+
+function exibirMensagensDeErro(erros){
+    var ulErro = document.querySelector("#mensagem-erro");
+    erros.forEach(function(erro){
+        var liErro = document.createElement("li");
+        liErro.textContent = erro;
+        ulErro.appendChild(liErro);
+    });
+    ulErro.classList.remove("invisible");
+}

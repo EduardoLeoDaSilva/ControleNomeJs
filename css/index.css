@@ -141,3 +141,12 @@ button[disabled=disabled], button:disabled {
 	opacity: 0;
 	transition: 500ms;
 }
+
+#mensagem-erro{
+	color: red;
+	padding: 20px
+}
+
+.invisible{
+	display: none;
+}
