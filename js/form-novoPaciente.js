@@ -52,10 +52,12 @@ function adicionarPaciente(paciente) {
     atributos.forEach(element => {
         var td = document.createElement("td");
         td.textContent = paciente[element]
+        td.classList.add("info-"+element);
         pacienteTr.appendChild(td);
 
     });
     var imcTd = document.createElement("td");
+    imcTd.classList.add("info-imc")
     pacienteTr.appendChild(imcTd);
     imcTd.textContent = calcularImc(paciente.peso, paciente.altura);
     tabela.appendChild(pacienteTr);
