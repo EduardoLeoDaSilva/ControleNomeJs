@@ -32,7 +32,7 @@ function preencherCampImc(pacientes) {
             paciente.querySelector(".info-imc").textContent = imc;
         }
     }
-    
+    console.log("Função finalizadadadwdawd");
 }
 
 function calcularImc(peso, altura){
