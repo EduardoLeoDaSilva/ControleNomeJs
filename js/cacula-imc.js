@@ -25,16 +25,16 @@ function preencherCampImc(pacientes) {
             paciente.classList.add("altura-peso-invalido");
         }
         else {
-            var imc = calcularImc(paciente);
+            var peso = paciente.querySelector(".info-peso").textContent;
+            var altura= paciente.querySelector(".info-altura").textContent;
+            var imc = calcularImc(peso,altura);
             paciente.querySelector(".info-imc").textContent = imc;
         }
     }
     console.log("Função finalizada");
 }
 
-function calcularImc(paciente){
-    var peso = paciente.querySelector(".info-peso").textContent;
-    var altura= paciente.querySelector(".info-altura").textContent;
+function calcularImc(peso, altura){
     var imc = peso / (altura * altura);
     return  imc.toFixed(2);
 }
