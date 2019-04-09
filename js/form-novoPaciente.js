@@ -36,6 +36,7 @@ function obterPaciente(form) {
 function adicionarPaciente(paciente) {
     var atributos = Object.keys(paciente);
     var pacienteTr = document.createElement("tr");
+    pacienteTr.classList.add("paciente");
     var tabela = document.querySelector("#tabela-pacientes")
     atributos.forEach(element => {
         var td = document.createElement("td");
